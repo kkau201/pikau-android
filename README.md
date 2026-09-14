@@ -1,8 +1,7 @@
 # Pīkau
 
-A Kotlin/Jetpack Compose tramping companion app — trip planning, a personal
-gear library, and generated packing lists. Built as a portfolio project while
-upskilling toward a senior Android developer role.
+A Kotlin/Jetpack Compose tramping companion app. Current MVP will include trip planning, 
+a personal gear library, and meal planning.
 
 > **Pīkau** (te reo Māori) — a backpack, or "to carry on one's back."
 
@@ -12,11 +11,16 @@ upskilling toward a senior Android developer role.
 
 ## Features (MVP)
 
-- **Trips** — create and browse tramping trips
-- **Gear Library** — a reusable personal database of gear
-- **Packing Lists** — generated per trip from the Gear Library, grouped by category
-- **Trip Notes** — free-text notes per trip
-- **Pre-trip Reminders** — local notification ahead of a trip date
+- **Trips**: create and browse tramping trips
+- **Gear Library**: a reusable personal database of gear
+- **Packing Lists**: generated per trip from the Gear Library, grouped by category
+- **Pre-trip Reminders**: local notification ahead of a trip date
+
+## Future work
+- **Meal Library**: a reusable personal database of meals
+- **Weather integration**: the updated, predicted weather displayed per trip
+- **AllTrails integration**: a reusable personal database of meals
+- **Trip to-do list**: a list of tasks per trip with tracked completion 
 
 ## Tech stack
 
@@ -33,13 +37,13 @@ upskilling toward a senior Android developer role.
 ## Why this project
 
 Built to be genuinely useful for planning my own tramping trips, and to work
-through the full Android stack — persistence, background work, and
-non-trivial UI state — end to end, rather than following a single tutorial.
+through the full Android stack (persistence, background work, and
+non-trivial UI state) end to end, rather than following a single tutorial.
 
 ## Roadmap
 
-See [project board](#) for current task breakdown across design and
-development.
+See [project board](#https://app.notion.com/p/Hike-App-3ce8d9047aff8087b615f3a62697adc6?source=copy_link) 
+for current task breakdown across design and development.
 
 ## Screenshots
 
