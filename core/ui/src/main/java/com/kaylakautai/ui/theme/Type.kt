@@ -1,4 +1,4 @@
-package com.kaylakautai.pikau.ui.theme
+package com.kaylakautai.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.ExperimentalTextApi
@@ -8,7 +8,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontVariation
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.kaylakautai.pikau.R
+import com.kaylakautai.pikau.ui.R
 
 // Set of Material typography styles to start with
 @OptIn(ExperimentalTextApi::class)

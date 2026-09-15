@@ -1,4 +1,4 @@
-package com.kaylakautai.pikau.ui.theme
+package com.kaylakautai.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

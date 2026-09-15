@@ -1,4 +1,4 @@
-package com.kaylakautai.pikau.ui.theme
+package com.kaylakautai.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
