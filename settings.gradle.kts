@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -24,3 +25,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Pīkau"
 include(":app")
+include(":core:database")
+include(":core:data")
+include(":core:ui")
+include(":core:model")
