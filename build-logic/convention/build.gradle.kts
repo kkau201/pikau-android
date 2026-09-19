@@ -22,5 +22,13 @@ gradlePlugin {
             id = "pikau.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
         }
+        register("androidApplication") {
+            id = "pikau.android.application"
+            implementationClass = "AndroidApplicationConventionPlugin"
+        }
+        register("androidApplicationCompose") {
+            id = "pikau.android.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
     }
 }

@@ -38,6 +38,9 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+
+pikau-android-application = { id = "pikau.android.application" }
+pikau-android-application-compose = { id = "pikau.android.application.compose" }
 pikau-android-library = { id = "pikau.android.library" }
 pikau-android-library-compose = { id = "pikau.android.library.compose" }
 pikau-jvm-library = { id = "pikau.jvm.library" }
