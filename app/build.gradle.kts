@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.pikau.android.application.compose)
+    alias(libs.plugins.pikau.hilt.library)
 }
 
 android {
