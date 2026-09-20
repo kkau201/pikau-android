@@ -6,12 +6,8 @@ import kotlin.enums.enumEntries
 
 class DifficultyConverter {
     @TypeConverter
-    fun toDifficulty(value: Int): Difficulty {
-        return enumEntries<Difficulty>()[value]
-    }
+    fun toDifficulty(value: String): Difficulty = Difficulty.valueOf(value)
 
     @TypeConverter
-    fun fromDifficulty(value: Difficulty): Int {
-        return value.ordinal
-    }
+    fun fromDifficulty(value: Difficulty): String = value.name
 }
