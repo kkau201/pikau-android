@@ -3,7 +3,7 @@ package com.kaylakautai.database.util
 import androidx.room.TypeConverter
 import java.time.LocalDate
 
-class LocalDateTimeConverter {
+class LocalDateConverter {
 
     @TypeConverter
     fun toDate(dateString: String): LocalDate {

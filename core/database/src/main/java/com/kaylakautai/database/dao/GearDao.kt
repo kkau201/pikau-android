@@ -5,17 +5,19 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.kaylakautai.database.model.TripEntity
+import com.kaylakautai.database.model.GearEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface TripDao {
+interface GearDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertTrip(trip: TripEntity)
+    suspend fun insertGear(gear: GearEntity)
 
     @Delete
-    suspend fun deleteTrip(trip: TripEntity)
+    suspend fun deleteGear(gear: GearEntity)
 
-    @Query("SELECT * FROM trips ORDER BY start_date DESC")
-    fun getAllTripsSortedByDate(): Flow<List<TripEntity>>
+    @Query("SELECT * FROM gear ORDER BY name ASC")
+    fun getAllGear(): Flow<List<GearEntity>>
+
 }

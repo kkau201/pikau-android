@@ -1,17 +1,16 @@
 package com.kaylakautai.database.util
 
 import androidx.room.TypeConverter
-import com.kaylakautai.model.TripCategory
 import kotlinx.serialization.json.Json
 
-class CategoryListConverter {
+class StringListConverter {
     @TypeConverter
-    fun fromCategoryList(value: List<TripCategory>): String {
+    fun fromStringList(value: List<String>): String {
         return Json.encodeToString(value)
     }
 
     @TypeConverter
-    fun toCategoryList(value: String): List<TripCategory> {
+    fun toStringList(value: String): List<String> {
         return Json.decodeFromString(value)
     }
 }

@@ -2,7 +2,6 @@ package com.kaylakautai.database.util
 
 import androidx.room.TypeConverter
 import com.kaylakautai.model.Difficulty
-import kotlin.enums.enumEntries
 
 class DifficultyConverter {
     @TypeConverter
