@@ -21,11 +21,13 @@ data class TripEntity(
     val startDate: LocalDate,
     @ColumnInfo(name = "end_date")
     val endDate: LocalDate,
-    val categories: List<TripCategory>,
+    val categories: List<String>,
     val difficulty: Difficulty
 )
 
-fun TripEntity.asModel() = Trip(
+fun TripEntity.asModel(
+    categories: List<TripCategory>
+) = Trip(
     id = id,
     name = name,
     location = location,
