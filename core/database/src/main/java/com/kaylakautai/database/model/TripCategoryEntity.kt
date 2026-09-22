@@ -7,7 +7,9 @@ import com.kaylakautai.model.TripCategory
 
 @Entity(tableName = "trip_categories")
 data class TripCategoryEntity(
-    @PrimaryKey val id: String,
+    @PrimaryKey
+    val id: String,
+
     @ColumnInfo(name = "display_text")
     val displayText: String,
 
@@ -15,4 +17,4 @@ data class TripCategoryEntity(
     val isArchived: Boolean = false
 )
 
-fun TripCategoryEntity.toDomain() = TripCategory(id = id, displayText = displayText)
+fun TripCategoryEntity.asModel() = TripCategory(id = id, displayText = displayText)

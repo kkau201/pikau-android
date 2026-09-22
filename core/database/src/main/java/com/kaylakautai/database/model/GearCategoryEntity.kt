@@ -15,4 +15,4 @@ data class GearCategoryEntity(
     val isArchived: Boolean = false
 )
 
-fun GearCategoryEntity.toDomain() = GearCategory(id = id, displayText = displayText)
+fun GearCategoryEntity.asModel() = GearCategory(id = id, displayText = displayText)

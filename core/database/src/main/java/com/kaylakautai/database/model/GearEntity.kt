@@ -33,3 +33,11 @@ fun GearEntity.asModel(
     weight = weight,
     suggestedFor = suggestedFor
 )
+
+fun Gear.asEntity() = GearEntity(
+    id = id,
+    name = name,
+    categoryId = category.id,
+    weight = weight,
+    suggestedForIds = suggestedFor.map { it.id }
+)

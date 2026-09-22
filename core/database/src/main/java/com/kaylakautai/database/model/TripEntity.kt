@@ -36,3 +36,13 @@ fun TripEntity.asModel(
     categories = categories,
     difficulty = difficulty
 )
+
+fun Trip.asEntity() = TripEntity(
+    id = id,
+    name = name,
+    location = location,
+    startDate = startDate,
+    endDate = endDate,
+    categories = categories.map { it.id },
+    difficulty = difficulty
+)

@@ -1,7 +1,6 @@
 package com.kaylakautai.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -10,14 +9,14 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface PackingListItemDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertItem(item: PackingListItemEntity)
 
-    @Delete
-    suspend fun deleteItem(item: PackingListItemEntity)
+    @Query("DELETE FROM packing_list_items WHERE trip_id = :tripId AND gear_id = :gearId")
+    suspend fun deleteByGear(tripId: String, gearId: String)
 
-    @Query("UPDATE packing_list_items SET is_packed = :isPacked WHERE id = :id")
-    suspend fun setPacked(id: String, isPacked: Boolean)
+    @Query("UPDATE packing_list_items SET is_packed = :isPacked WHERE trip_id = :tripId AND gear_id = :gearId")
+    suspend fun setPackedByGear(tripId: String, gearId: String, isPacked: Boolean)
 
     /**
      * Returns a trip's list of packing list items (may be empty).

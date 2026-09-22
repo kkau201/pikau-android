@@ -1,20 +1,18 @@
 package com.kaylakautai.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.kaylakautai.database.model.FoodItemEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface FoodItemDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insertItem(item: FoodItemEntity)
 
-    @Delete
-    suspend fun deleteItem(item: FoodItemEntity)
+    @Query("DELETE FROM food_items WHERE id = :id")
+    suspend fun deleteItem(id: String)
 
     @Query("UPDATE food_items SET is_packed = :isPacked WHERE id = :id")
     suspend fun setPacked(id: String, isPacked: Boolean)

@@ -1,7 +1,6 @@
 package com.kaylakautai.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -13,8 +12,8 @@ interface TripNoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: TripNoteEntity)
 
-    @Delete
-    suspend fun deleteNote(note: TripNoteEntity)
+    @Query("DELETE FROM trips WHERE id = :noteId")
+    suspend fun deleteNote(noteId: String)
 
     @Query("SELECT * FROM trip_notes WHERE trip_id = :tripId ORDER BY created_at DESC")
     fun getForTrip(tripId: String): Flow<List<TripNoteEntity>>

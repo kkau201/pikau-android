@@ -2,11 +2,24 @@ package com.kaylakautai.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.kaylakautai.model.TripNote
 import java.time.LocalDateTime
 
-@Entity(tableName = "trip_notes")
+@Entity(
+    tableName = "trip_notes",
+    foreignKeys = [
+        ForeignKey(
+            entity = TripEntity::class,
+            parentColumns = ["id"],
+            childColumns = ["trip_id"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ],
+    indices = [Index("trip_id")]
+)
 data class TripNoteEntity(
     @PrimaryKey val id: String,
 
