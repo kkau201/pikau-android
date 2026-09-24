@@ -8,6 +8,7 @@ android {
 }
 
 dependencies {
+    testImplementation(libs.androidx.room.testing)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
