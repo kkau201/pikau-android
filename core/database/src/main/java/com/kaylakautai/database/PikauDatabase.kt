@@ -41,7 +41,7 @@ import com.kaylakautai.database.util.StringListConverter
     LocalDateTimeConverter::class,
     StringListConverter::class
 )
-internal abstract class PikauDatabase : RoomDatabase() {
+abstract class PikauDatabase : RoomDatabase() {
     abstract fun foodItemDao(): FoodItemDao
     abstract fun gearDao(): GearDao
     abstract fun gearCategoryDao(): GearCategoryDao

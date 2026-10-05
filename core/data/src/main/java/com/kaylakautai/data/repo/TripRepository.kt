@@ -2,10 +2,13 @@ package com.kaylakautai.data.repo
 
 import com.kaylakautai.model.Trip
 import kotlinx.coroutines.flow.Flow
+import java.time.LocalDate
 
 interface TripRepository {
 
-    fun getAllTrips(): Flow<List<Trip>>
+    fun getPastTrips(date: LocalDate = LocalDate.now()): Flow<List<Trip>>
+
+    fun getUpcomingTrips(date: LocalDate = LocalDate.now()): Flow<List<Trip>>
 
     fun getTripById(id: String): Flow<Trip?>
 

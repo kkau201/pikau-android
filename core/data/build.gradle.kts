@@ -8,8 +8,11 @@ android {
 }
 
 dependencies {
+    testImplementation(testFixtures(project(":core:database")))
     testImplementation(libs.androidx.room.testing)
     testImplementation(libs.junit)
+    testImplementation(libs.androidx.test.core.ktx)
+    testImplementation(libs.robolectric)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 

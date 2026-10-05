@@ -6,6 +6,7 @@ plugins {
 
 android {
     namespace = "com.kaylakautai.pikau.core.database"
+    testFixtures.enable = true
 }
 
 dependencies {
@@ -16,4 +17,8 @@ dependencies {
     ksp(libs.androidx.room.compiler)
 
     testImplementation(libs.androidx.room.testing)
+    testImplementation(libs.androidx.test.core.ktx)
+    testImplementation(libs.robolectric)
+
+    testFixturesImplementation(project(":core:model"))
 }
