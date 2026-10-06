@@ -9,6 +9,7 @@ android {
 
 dependencies {
     testImplementation(testFixtures(project(":core:database")))
+    testImplementation(testFixtures(project(":core:model")))
     testImplementation(libs.androidx.room.testing)
     testImplementation(libs.junit)
     testImplementation(libs.androidx.test.core.ktx)
