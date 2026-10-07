@@ -12,7 +12,7 @@ interface TripNoteDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: TripNoteEntity)
 
-    @Query("DELETE FROM trips WHERE id = :noteId")
+    @Query("DELETE FROM trip_notes WHERE id = :noteId")
     suspend fun deleteNote(noteId: String)
 
     @Query("SELECT * FROM trip_notes WHERE trip_id = :tripId ORDER BY created_at DESC")

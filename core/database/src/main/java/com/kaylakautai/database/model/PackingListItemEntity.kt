@@ -24,8 +24,8 @@ import com.kaylakautai.model.PackingListItem
     ]
 )
 data class PackingListItemEntity(
-    @PrimaryKey val
-    id: String,
+    @PrimaryKey
+    val id: String,
 
     @ColumnInfo(name = "trip_id")
     val tripId: String,
