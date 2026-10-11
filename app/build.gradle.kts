@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.pikau.android.application.compose)
     alias(libs.plugins.pikau.hilt.library)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -21,6 +22,11 @@ android {
 
 dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.navigation3.ui)
+    implementation(libs.androidx.navigation3.runtime)
+    implementation(libs.androidx.lifecycle.viewmodel.nav3)
+    implementation(libs.kotlinx.serialization.json)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)
