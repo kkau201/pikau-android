@@ -49,7 +49,7 @@ val PikauTypography = Typography(
     ),
     titleMedium = TextStyle(
         fontFamily = AfacadFont,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.Medium,
         fontSize = 24.sp,
         lineHeight = 28.sp,
     ),

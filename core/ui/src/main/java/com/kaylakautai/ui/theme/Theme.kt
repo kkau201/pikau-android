@@ -15,6 +15,8 @@ private val PikauDarkColorScheme = darkColorScheme(
     secondary = LightGreen,
     tertiary = OliveGreen,
     background = LightGreen,
+    onPrimary = LightGreen,
+    onSecondary = ForestGreen,
 )
 
 private val PikauLightColorScheme = lightColorScheme(
@@ -22,12 +24,11 @@ private val PikauLightColorScheme = lightColorScheme(
     secondary = LightGreen,
     tertiary = OliveGreen,
     background = LightGreen,
+    onPrimary = LightGreen,
+    onSecondary = ForestGreen,
 
     /* Other default colors to override
-    background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
