@@ -18,11 +18,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.kaylakautai.ui.theme.PikauShapes
-import com.kaylakautai.ui.theme.PīkauTheme
 import com.kaylakautai.ui.theme.Spacing
+import com.kaylakautai.ui.util.PikauPreviewSurface
+import com.kaylakautai.ui.util.PikauPreviews
 
 @Composable
 fun PikauTabs(
@@ -56,6 +57,8 @@ fun PikauTabs(
                 Text(
                     text = text,
                     style = MaterialTheme.typography.bodyMedium,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
                     modifier = Modifier.padding(vertical = Spacing.xSmall)
                 )
             }
@@ -63,10 +66,10 @@ fun PikauTabs(
     }
 }
 
-@Preview(showBackground = true)
+@PikauPreviews
 @Composable
 fun PikauTabsPreview() {
-    PīkauTheme(dynamicColor = false) {
+    PikauPreviewSurface {
         Column(
             modifier = Modifier
                 .safeDrawingPadding()

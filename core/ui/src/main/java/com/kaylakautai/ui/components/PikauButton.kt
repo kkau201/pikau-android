@@ -22,12 +22,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kaylakautai.pikau.ui.R
 import com.kaylakautai.ui.theme.PikauShapes
-import com.kaylakautai.ui.theme.PīkauTheme
 import com.kaylakautai.ui.theme.Spacing
+import com.kaylakautai.ui.util.PikauPreviewSurface
+import com.kaylakautai.ui.util.PikauPreviews
 
 enum class PikauButtonStyle { Primary, Secondary, Tertiary }
 
@@ -124,11 +124,11 @@ private fun ButtonContent(
     }
 }
 
-@Preview(showBackground = true)
+@PikauPreviews
 @Composable
 private fun PikauButtonPreview() {
     val modifier = Modifier.widthIn(min = 250.dp)
-    PīkauTheme(dynamicColor = false) {
+    PikauPreviewSurface {
         Column(
             modifier = Modifier
                 .safeDrawingPadding()

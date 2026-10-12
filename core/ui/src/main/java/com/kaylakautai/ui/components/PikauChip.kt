@@ -15,11 +15,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.kaylakautai.pikau.ui.R
-import com.kaylakautai.ui.theme.PīkauTheme
 import com.kaylakautai.ui.theme.Spacing
+import com.kaylakautai.ui.util.PikauPreviewSurface
+import com.kaylakautai.ui.util.PikauPreviews
 
 enum class PikauChipSize { Small, Large }
 
@@ -35,7 +35,6 @@ fun PikauChip(
 ) {
     val colors = MaterialTheme.colorScheme
     val height = if (size == PikauChipSize.Small) 26.dp else 40.dp
-    val iconSize = if (size == PikauChipSize.Small) 16.dp else 24.dp
 
     FilterChip(
         selected = selected,
@@ -67,10 +66,10 @@ fun PikauChip(
     )
 }
 
-@Preview(showBackground = true)
+@PikauPreviews
 @Composable
 private fun PikauChipPreview() {
-    PīkauTheme(dynamicColor = false) {
+    PikauPreviewSurface {
         Row(
             modifier = Modifier.padding(Spacing.medium),
             horizontalArrangement = Arrangement.spacedBy(Spacing.large)

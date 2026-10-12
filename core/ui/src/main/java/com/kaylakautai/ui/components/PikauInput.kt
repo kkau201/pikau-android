@@ -18,10 +18,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.tooling.preview.Preview
 import com.kaylakautai.ui.theme.PikauShapes
-import com.kaylakautai.ui.theme.PīkauTheme
 import com.kaylakautai.ui.theme.Spacing
+import com.kaylakautai.ui.util.PikauPreviewSurface
+import com.kaylakautai.ui.util.PikauPreviews
 
 @Composable
 fun PikauInput(
@@ -33,14 +33,18 @@ fun PikauInput(
     BasicTextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = modifier
-            .background(color = MaterialTheme.colorScheme.secondary, shape = PikauShapes.medium)
-            .padding(horizontal = Spacing.medium, vertical = Spacing.small),
+        modifier = modifier,
         textStyle = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onSecondary),
         cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
         singleLine = true,
         decorationBox = { innerTextField ->
-            Box(contentAlignment = Alignment.CenterStart) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colorScheme.secondary, PikauShapes.medium)
+                    .padding(horizontal = Spacing.medium, vertical = Spacing.small),
+                contentAlignment = Alignment.CenterStart
+            ) {
                 if (value.isEmpty()) {
                     Text(
                         text = placeholder,
@@ -54,10 +58,10 @@ fun PikauInput(
     )
 }
 
-@Preview(showBackground = true)
+@PikauPreviews
 @Composable
 fun PikauInputPreview() {
-    PīkauTheme(dynamicColor = false) {
+    PikauPreviewSurface {
         Column(
             modifier = Modifier
                 .safeDrawingPadding()
