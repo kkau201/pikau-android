@@ -9,13 +9,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
-import androidx.compose.material3.NavigationBarItemColors
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import com.kaylakautai.ui.theme.ShapeCornerRadii
 import com.kaylakautai.ui.theme.Spacing
 
@@ -58,15 +59,13 @@ fun PikauBottomBar(
                             contentDescription = null // no desc required as label is provided
                         )
                     },
-                    label = { Text(destination.title) },
-                    colors = NavigationBarItemColors(
+                    label = { Text(stringResource(destination.title)) },
+                    colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.secondary,
                         selectedTextColor = MaterialTheme.colorScheme.secondary,
-                        selectedIndicatorColor = Color.Transparent,
+                        indicatorColor = Color.Transparent,
                         unselectedIconColor = MaterialTheme.colorScheme.tertiary,
-                        unselectedTextColor = MaterialTheme.colorScheme.tertiary,
-                        disabledIconColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.5f),
-                        disabledTextColor = MaterialTheme.colorScheme.tertiary.copy(alpha = 0.5f)
+                        unselectedTextColor = MaterialTheme.colorScheme.tertiary
                     )
                 )
             }

@@ -1,5 +1,7 @@
 package com.kaylakautai.pikau.navigation
 
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.navigation3.runtime.NavKey
 import com.kaylakautai.pikau.R
 
@@ -12,13 +14,15 @@ import com.kaylakautai.pikau.R
  */
 enum class TopLevelDestination(
     val route: Route,
-    val title: String,
+    @StringRes
+    val title: Int,
+    @DrawableRes
     val icon: Int
 ) {
-    HOME(Route.HomeTab, "Home", R.drawable.ic_tab_home),
-    GEAR(Route.GearTab, "Gear", R.drawable.ic_tab_gear),
-    TRIPS(Route.TripsTab, "Trips", R.drawable.ic_tab_trips),
-    ME(Route.MeTab, "Me", R.drawable.ic_tab_me);
+    HOME(Route.HomeTab, R.string.tab_label_home, R.drawable.ic_tab_home),
+    GEAR(Route.GearTab, R.string.tab_label_gear, R.drawable.ic_tab_gear),
+    TRIPS(Route.TripsTab, R.string.tab_label_trips, R.drawable.ic_tab_trips),
+    ME(Route.MeTab, R.string.tab_label_me, R.drawable.ic_tab_me);
 
     companion object {
         val routes: Set<NavKey> = entries.map { it.route }.toSet()
