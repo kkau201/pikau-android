@@ -23,7 +23,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Pīkau"
+rootProject.name = "Pikau"
 include(":app")
 include(":core:database")
 include(":core:data")

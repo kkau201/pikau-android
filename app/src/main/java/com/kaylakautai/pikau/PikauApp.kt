@@ -14,6 +14,7 @@ import com.kaylakautai.pikau.navigation.PikauBottomBar
 import com.kaylakautai.pikau.navigation.Route
 import com.kaylakautai.pikau.navigation.TopLevelDestination
 import com.kaylakautai.pikau.navigation.rememberNavigationState
+import com.kaylakautai.trips.TripsScreen
 
 @Composable
 fun PikauApp() {
@@ -34,7 +35,7 @@ fun PikauApp() {
             Text("Gear Screen")
         }
         entry<Route.TripsTab> {
-            Text("Trips Screen")
+            TripsScreen()
         }
         entry<Route.MeTab> {
             Text("Me Screen")

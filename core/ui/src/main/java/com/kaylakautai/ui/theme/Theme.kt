@@ -36,7 +36,7 @@ private val PikauLightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun PīkauTheme(
+fun PikauTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+, however want to keep brand identity
     dynamicColor: Boolean = false,
