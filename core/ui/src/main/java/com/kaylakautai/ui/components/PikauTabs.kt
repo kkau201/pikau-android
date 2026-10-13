@@ -1,5 +1,6 @@
 package com.kaylakautai.ui.components
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,12 +19,30 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.kaylakautai.ui.theme.PikauShapes
 import com.kaylakautai.ui.theme.Spacing
 import com.kaylakautai.ui.util.PikauPreviewSurface
 import com.kaylakautai.ui.util.PikauPreviews
+
+@Composable
+fun PikauTabs(
+    modifier: Modifier = Modifier,
+    @StringRes optionsRes: List<Int>,
+    selectedIndex: Int,
+    onOptionSelected: (Int) -> Unit,
+) {
+    PikauTabs(
+        modifier = modifier,
+        options = optionsRes.map {
+            stringResource(it)
+        },
+        selectedIndex = selectedIndex,
+        onOptionSelected = onOptionSelected,
+    )
+}
 
 @Composable
 fun PikauTabs(

@@ -35,10 +35,19 @@ fun PikauApp() {
             Text("Gear Screen")
         }
         entry<Route.TripsTab> {
-            TripsScreen()
+            TripsScreen(
+                onTripClicked = { tripId ->
+                    navigator.navigate(Route.TripDetail(tripId))
+                }
+            )
         }
         entry<Route.MeTab> {
             Text("Me Screen")
+        }
+
+        entry<Route.TripDetail> { key ->
+            // TODO replace placeholder
+            Text("Trip detail: ${key.tripId}")
         }
     }
 

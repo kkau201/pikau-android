@@ -1,6 +1,7 @@
 package com.kaylakautai.ui.components
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -22,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kaylakautai.pikau.ui.R
 import com.kaylakautai.ui.theme.PikauShapes
@@ -35,6 +37,28 @@ private val ButtonIconSize = 24.dp
 private val TertiaryStrokeWidth = 3.dp
 private const val DISABLED_CONTAINER_ALPHA = 0.45f
 private const val DISABLED_CONTENT_ALPHA = 0.6f
+
+
+@Composable
+fun PikauButton(
+    @StringRes textRes: Int,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    style: PikauButtonStyle = PikauButtonStyle.Primary,
+    enabled: Boolean = true,
+    @DrawableRes leadingIcon: Int? = null,
+    @DrawableRes trailingIcon: Int? = null
+) {
+    PikauButton(
+        text = stringResource(id = textRes),
+        onClick = onClick,
+        modifier = modifier,
+        style = style,
+        enabled = enabled,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon
+    )
+}
 
 @Composable
 fun PikauButton(

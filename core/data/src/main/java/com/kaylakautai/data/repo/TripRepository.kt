@@ -6,9 +6,9 @@ import java.time.LocalDate
 
 interface TripRepository {
 
-    fun getPastTrips(date: LocalDate = LocalDate.now()): Flow<List<Trip>>
+    fun getPastTrips(date: LocalDate): Flow<List<Trip>>
 
-    fun getUpcomingTrips(date: LocalDate = LocalDate.now()): Flow<List<Trip>>
+    fun getUpcomingTrips(date: LocalDate): Flow<List<Trip>>
 
     fun getTripById(id: String): Flow<Trip?>
 

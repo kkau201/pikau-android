@@ -5,6 +5,8 @@ plugins {
 
 android {
     namespace = "com.kaylakautai.trips"
+    resourcePrefix = "trips_"
+    testOptions { unitTests.isReturnDefaultValues = true }
 }
 
 dependencies {
@@ -14,6 +16,7 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
 
     testImplementation(testFixtures(project(":core:model")))
     testImplementation(libs.junit)

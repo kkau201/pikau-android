@@ -5,3 +5,7 @@ plugins {
 android {
     namespace = "com.kaylakautai.pikau.ui"
 }
+
+dependencies {
+    testImplementation(libs.junit)
+}
