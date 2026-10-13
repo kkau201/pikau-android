@@ -6,7 +6,6 @@
     <string name="trips_no_trips_title_upcoming">No upcoming trips</string>
     <string name="trips_no_trips_message_upcoming">Your pack is waiting for an adventure. \nTime to plan your next tramp in the bush.</string>
     <string name="trips_new_trip_button">New trip</string>
-    <string name="trips_failed_to_load_trips">Failed to load trips.</string>
     <string name="trips_tab_upcoming">Upcoming</string>
     <string name="trips_tab_past">Past</string>
 </resources>

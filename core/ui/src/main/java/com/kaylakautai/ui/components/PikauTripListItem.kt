@@ -6,11 +6,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,6 +19,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.kaylakautai.pikau.ui.R
+import com.kaylakautai.ui.extensions.Spacer
 import com.kaylakautai.ui.model.TripListItem
 import com.kaylakautai.ui.theme.PikauShapes
 import com.kaylakautai.ui.theme.Spacing
@@ -53,7 +51,7 @@ fun PikauTripListItem(
         contentDescription = null // No use to screen reader
     )
 
-    Spacer(Modifier.width(Spacing.medium))
+    Spacer(Spacing.medium)
 
     Column(
         verticalArrangement = Arrangement.spacedBy(Spacing.xSmall)
@@ -75,7 +73,7 @@ fun PikauTripListItem(
             style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onPrimary
         )
-        Spacer(Modifier.height(Spacing.xSmall)) // 4 + 4 = 8
+        Spacer(Spacing.xSmall) // 4 + 4 = 8
         LinearProgressIndicator(
             progress = { tripDetails.progress },
             modifier = Modifier,

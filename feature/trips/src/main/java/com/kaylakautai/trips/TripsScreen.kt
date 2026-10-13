@@ -30,6 +30,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kaylakautai.ui.components.PikauButton
 import com.kaylakautai.ui.components.PikauTabs
 import com.kaylakautai.ui.components.PikauTripListItem
+import com.kaylakautai.ui.extensions.Spacer
 import com.kaylakautai.ui.lce.FullScreenError
 import com.kaylakautai.ui.lce.FullScreenLoader
 import com.kaylakautai.ui.lce.UiState
@@ -40,20 +41,20 @@ import com.kaylakautai.ui.theme.Spacing
 
 @Composable
 fun TripsScreen(
-    onTripClicked: (String) -> Unit,
+    onTripClick: (String) -> Unit,
 ) {
     val vm: TripsViewModel = hiltViewModel()
     val state by vm.uiState.collectAsStateWithLifecycle()
 
     when (val currentState = state) {
         is UiState.Loading -> FullScreenLoader()
-        is UiState.Error -> FullScreenError(currentState.message)
+        is UiState.Error -> FullScreenError(currentState.error, onRetryClick = vm::onRetryClick)
         is UiState.Content -> {
             TripsScreenContent(
                 state = currentState.data,
                 onOptionSelected = vm::onOptionSelected,
-                onTripClicked = onTripClicked,
-                onNewTripClicked = vm::onNewTripClicked
+                onTripClick = onTripClick,
+                onNewTripClick = vm::onNewTripClick
             )
         }
     }
@@ -63,8 +64,8 @@ fun TripsScreen(
 fun TripsScreenContent(
     state: TripsScreenData,
     onOptionSelected: (Int) -> Unit,
-    onTripClicked: (String) -> Unit,
-    onNewTripClicked: () -> Unit,
+    onTripClick: (String) -> Unit,
+    onNewTripClick: () -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -93,7 +94,7 @@ fun TripsScreenContent(
                 onOptionSelected = onOptionSelected
             )
 
-            Spacer(modifier = Modifier.height(Spacing.medium))
+            Spacer(Spacing.medium)
 
             Column(
                 modifier = Modifier
@@ -114,7 +115,7 @@ fun TripsScreenContent(
                             PikauTripListItem(
                                 tripDetails = it,
                                 onClick = {
-                                    onTripClicked(it.id)
+                                    onTripClick(it.id)
                                 }
                             )
                             Spacer(Modifier.height(Spacing.small))
@@ -126,7 +127,7 @@ fun TripsScreenContent(
 
         PikauButton(
             textRes = R.string.trips_new_trip_button,
-            onClick = onNewTripClicked,
+            onClick = onNewTripClick,
             leadingIcon = com.kaylakautai.pikau.ui.R.drawable.ic_add,
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -194,8 +195,8 @@ fun PreviewEmptyUpcomingTripsScreenContent() {
         TripsScreenContent(
             state = TripsScreenData(),
             onOptionSelected = {},
-            onTripClicked = {},
-            onNewTripClicked = {}
+            onTripClick = {},
+            onNewTripClick = {}
         )
     }
 }
@@ -209,8 +210,8 @@ fun PreviewEmptyPastTripsScreenContent() {
                 selectedOptionIndex = 1
             ),
             onOptionSelected = {},
-            onTripClicked = {},
-            onNewTripClicked = {}
+            onTripClick = {},
+            onNewTripClick = {}
         )
     }
 }
@@ -224,8 +225,8 @@ fun PreviewPopulatedTripsScreenContent() {
                 upcomingTrips = previewTrips
             ),
             onOptionSelected = {},
-            onTripClicked = {},
-            onNewTripClicked = {},
+            onTripClick = {},
+            onNewTripClick = {},
         )
     }
 }

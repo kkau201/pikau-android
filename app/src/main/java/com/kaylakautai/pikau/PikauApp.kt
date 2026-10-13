@@ -36,7 +36,7 @@ fun PikauApp() {
         }
         entry<Route.TripsTab> {
             TripsScreen(
-                onTripClicked = { tripId ->
+                onTripClick = { tripId ->
                     navigator.navigate(Route.TripDetail(tripId))
                 }
             )

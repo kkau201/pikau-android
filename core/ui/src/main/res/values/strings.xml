@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="error_generic">An error occurred</string>
+    <string name="error_generic_title">Auē! Something went wrong</string>
+    <string name="error_generic_message">The app seems to be playing up. Give it another crack in a minute.</string>
+    <string name="try_again">Try again</string>
+
+    <string name="error_loading_trips_title">Failed to load trips</string>
+    <string name="error_loading_trips_message">There was an error loading in your trips. \nPlease try again in a minute.</string>
+
 </resources>
