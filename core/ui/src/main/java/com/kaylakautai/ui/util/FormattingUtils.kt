@@ -23,17 +23,23 @@ fun formatDateRangeToDisplay(
     val monthDayFormatter = DateTimeFormatter.ofPattern(MonthDayPattern, locale)
 
     return when {
-        // TODO Check if this is the behaviour I want - don't want to crash/show error
+        // Fallback for invalid date ranges to prevent UI crashes.
+        // TODO: Add non-fatal logging to track if this theoretically impossible state occurs.
         endDate.isBefore(startDate) -> startDate.format(fullFormatter)
+
+        // Different years: "28 Dec 2026 – 2 Jan 2027"
         startDate.year != endDate.year ->
             "${startDate.format(fullFormatter)} – ${endDate.format(fullFormatter)}"
 
+        // Different months, same year: "12 - 13 Sep 2026"
         startDate.month != endDate.month ->
             "${startDate.format(monthDayFormatter)} – ${endDate.format(fullFormatter)}"
 
+        // Different days, same month and year: "12 - 13 Sep 2026"
         startDate.dayOfMonth != endDate.dayOfMonth ->
             "${startDate.dayOfMonth} – ${endDate.format(fullFormatter)}"
 
+        // Exact same date: "12 Sep 2026"
         else -> endDate.format(fullFormatter)
     }
 }

@@ -62,11 +62,13 @@ class FormattingUtilsTest {
         assertEquals("28 Dec 2026 – 2 Jan 2027", result)
     }
 
-    @Test(expected = IllegalArgumentException::class)
-    fun `formateDateRangeToDisplay - start date after end date - throws IllegalArgumentException`() {
+    @Test
+    fun `formateDateRangeToDisplay - start date after end date - returns formatted start date`() {
         val startDate = LocalDate.of(2026, 9, 13)
         val endDate = LocalDate.of(2026, 9, 12)
 
-        formatDateRangeToDisplay(startDate, endDate)
+        val result = formatDateRangeToDisplay(startDate, endDate)
+
+        assertEquals("13 Sep 2026", result)
     }
 }
