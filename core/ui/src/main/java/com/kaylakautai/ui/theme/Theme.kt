@@ -26,13 +26,6 @@ private val PikauLightColorScheme = lightColorScheme(
     background = LightGreen,
     onPrimary = LightGreen,
     onSecondary = ForestGreen,
-
-    /* Other default colors to override
-    surface = Color(0xFFFFFBFE),
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
 )
 
 @Composable
