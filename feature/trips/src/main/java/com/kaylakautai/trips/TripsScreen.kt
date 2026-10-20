@@ -39,7 +39,10 @@ fun TripsScreen(
     val state by vm.uiState.collectAsStateWithLifecycle()
 
     when (val currentState = state) {
-        is UiState.Loading -> FullScreenLoader()
+        is UiState.Loading -> FullScreenLoader(
+            title = R.string.trips_loading_title,
+            message = R.string.trips_loading_message,
+        )
         is UiState.Error -> FullScreenError(currentState.error, onRetryClick = vm::onRetryClick)
         is UiState.Content -> {
             TripsScreenContent(

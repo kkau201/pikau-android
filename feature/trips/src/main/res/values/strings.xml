@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="trips_title">Trips</string>
+    <string name="trips_loading_title">Packing your bag...</string>
+    <string name="trips_loading_message">Getting your trips ready.</string>
     <string name="trips_no_trips_title_past">No completed trips</string>
     <string name="trips_no_trips_message_past">Once you complete a tramp, it’ll be saved here so you can look back on the hard mahi.</string>
     <string name="trips_no_trips_title_upcoming">No upcoming trips</string>
