@@ -10,9 +10,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -24,12 +29,27 @@ import com.kaylakautai.pikau.ui.R
 import com.kaylakautai.ui.theme.Spacing
 import com.kaylakautai.ui.util.PikauPreviewSurface
 import com.kaylakautai.ui.util.PikauPreviews
+import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
+
+private const val LoaderShowDelayMillis = 400L
 
 @Composable
 fun FullScreenLoader(
     @StringRes title: Int = R.string.loading_title,
     @StringRes message: Int = R.string.loading_message,
+    delayMillis: Long = LoaderShowDelayMillis,
 ) {
+    val showImmediately = LocalInspectionMode.current || delayMillis <= 0L
+    var visible by remember { mutableStateOf(showImmediately) }
+    LaunchedEffect(delayMillis) {
+        if (!showImmediately) {
+            delay(delayMillis.milliseconds)
+            visible = true
+        }
+    }
+    if (!visible) return
+
     Column(
         modifier = Modifier
             .fillMaxSize()
