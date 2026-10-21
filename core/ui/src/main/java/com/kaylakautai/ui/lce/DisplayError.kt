@@ -23,5 +23,11 @@ data class DisplayError(
             title = R.string.error_loading_trips_title,
             message = R.string.error_loading_trips_message,
         )
+
+        val NoGearFound = DisplayError(
+            icon = R.drawable.ic_empty_pack,
+            title = R.string.error_loading_gear_title,
+            message = R.string.error_loading_gear_message,
+        )
     }
 }

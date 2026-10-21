@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gear_title">Gear library</string>
+    <string name="gear_loading_title">Opening your pack...</string>
+    <string name="gear_loading_message">Getting your gear ready.</string>
+    <string name="gear_search_placeholder">Search...</string>
+    <string name="gear_empty_title">Empty Pack</string>
+    <string name="gear_empty_message">You currently have no items added.\nAdd an item below for it to display in your library.</string>
+    <string name="gear_no_results_title">No matching gear</string>
+    <string name="gear_no_results_message">Nothing in your pack matches those filters.</string>
+    <string name="gear_new_item_button">New Item</string>
+    <string name="gear_weight_grams">%1$d g</string>
+</resources>

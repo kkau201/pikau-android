@@ -14,6 +14,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.kaylakautai.pikau.ui.R
@@ -31,10 +32,13 @@ fun PikauChip(
     modifier: Modifier = Modifier,
     size: PikauChipSize = PikauChipSize.Small,
     enabled: Boolean = true,
-    @DrawableRes leadingIcon: Int? = null
+    @DrawableRes leadingIcon: Int? = null,
+    selectedContentColour: Color = MaterialTheme.colorScheme.onPrimary,
+    selectedBgColour: Color = MaterialTheme.colorScheme.primary,
+    unselectedContentColour: Color = MaterialTheme.colorScheme.onSecondary,
+    unselectedBgColour: Color = MaterialTheme.colorScheme.secondary,
 ) {
-    val colors = MaterialTheme.colorScheme
-    val height = if (size == PikauChipSize.Small) 26.dp else 40.dp
+    val height = if (size == PikauChipSize.Small) 20.dp else 32.dp
 
     FilterChip(
         selected = selected,
@@ -56,12 +60,12 @@ fun PikauChip(
             }
         },
         colors = FilterChipDefaults.filterChipColors(
-            containerColor = colors.secondary,
-            labelColor = colors.onSecondary,
-            iconColor = colors.onSecondary,
-            selectedContainerColor = colors.primary,
-            selectedLabelColor = colors.onPrimary,
-            selectedLeadingIconColor = colors.onPrimary
+            containerColor = unselectedBgColour,
+            labelColor = unselectedContentColour,
+            iconColor = unselectedContentColour,
+            selectedContainerColor = selectedBgColour,
+            selectedLabelColor = selectedContentColour,
+            selectedLeadingIconColor = selectedContentColour
         )
     )
 }

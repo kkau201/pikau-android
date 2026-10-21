@@ -6,6 +6,8 @@
 
     <string name="error_loading_trips_title">Failed to load trips</string>
     <string name="error_loading_trips_message">There was an error loading in your trips. \nPlease try again in a minute.</string>
+    <string name="error_loading_gear_title">Failed to load gear</string>
+    <string name="error_loading_gear_message">There was an error loading in your gear. \nPlease try again in a minute.</string>
     <string name="loading_title">One moment caller...</string>
     <string name="loading_message">Getting things ready.</string>
 

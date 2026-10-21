@@ -36,4 +36,5 @@ dependencies {
     implementation(project(":core:model"))
     implementation(project(":core:data"))
     implementation(project(":feature:trips"))
+    implementation(project(":feature:gear"))
 }

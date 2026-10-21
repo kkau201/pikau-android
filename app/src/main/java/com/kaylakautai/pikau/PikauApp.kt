@@ -17,6 +17,7 @@ import com.kaylakautai.pikau.navigation.Navigator
 import com.kaylakautai.pikau.navigation.PikauBottomBar
 import com.kaylakautai.pikau.navigation.Route
 import com.kaylakautai.pikau.navigation.TopLevelDestination
+import com.kaylakautai.gear.GearScreen
 import com.kaylakautai.pikau.navigation.rememberNavigationState
 import com.kaylakautai.trips.TripsScreen
 import com.kaylakautai.ui.components.PikauBackground
@@ -37,7 +38,11 @@ fun PikauApp() {
             Text("Home Screen")
         }
         entry<Route.GearTab> {
-            Text("Gear Screen")
+            GearScreen(
+                onGearClick = { gearId ->
+                    navigator.navigate(Route.GearDetail(gearId))
+                }
+            )
         }
         entry<Route.TripsTab> {
             TripsScreen(
@@ -53,6 +58,10 @@ fun PikauApp() {
         entry<Route.TripDetail> { key ->
             // TODO replace placeholder
             Text("Trip detail: ${key.tripId}")
+        }
+        entry<Route.GearDetail> { key ->
+            // TODO replace placeholder
+            Text("Gear detail: ${key.gearId}")
         }
     }
 
