@@ -32,26 +32,37 @@ class NavigationState(
 ) {
     var topLevelRoute: NavKey by topLevelRouteState
 
+    /** True when the active tab is showing its root screen, not a pushed destination. */
+    val isAtTabRoot: Boolean
+        get() = (backStacks[topLevelRoute]?.size ?: 1) <= 1
+
+    /**
+     * Converts the navigation backstacks into a list of decorated [NavEntry] objects
+     */
+    @Composable
+    fun decoratedEntries(
+        tab: NavKey,
+        entryProvider: (NavKey) -> NavEntry<NavKey>
+    ): List<NavEntry<NavKey>> {
+        val stack = backStacks[tab] ?: return emptyList()
+        return rememberDecoratedNavEntries(
+            backStack = stack,
+            entryDecorators = listOf(
+                rememberSaveableStateHolderNavEntryDecorator(),
+                rememberViewModelStoreNavEntryDecorator()
+            ),
+            entryProvider = entryProvider
+        )
+    }
+
     /**
      * Converts the navigation backstacks into a list of decorated [NavEntry] objects
      */
     @Composable
     fun toDecoratedEntries(
         entryProvider: (NavKey) -> NavEntry<NavKey>
-    ): List<NavEntry<NavKey>> {
-        val decoratedEntries = backStacks.mapValues { (_, stack) ->
-            rememberDecoratedNavEntries(
-                backStack = stack,
-                entryDecorators = listOf(
-                    rememberSaveableStateHolderNavEntryDecorator(),
-                    rememberViewModelStoreNavEntryDecorator()
-                ),
-                entryProvider = entryProvider
-            )
-        }
-
-        return getTopLevelRoutesInUse().flatMap { decoratedEntries[it] ?: emptyList() }
-    }
+    ): List<NavEntry<NavKey>> =
+        getTopLevelRoutesInUse().flatMap { decoratedEntries(it, entryProvider) }
 
     /**
      * Returns the keys for stacks that must remain active, ensuring the [startRoute]

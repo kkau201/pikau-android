@@ -2,7 +2,10 @@ package com.kaylakautai.pikau
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -12,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
-import androidx.navigation3.ui.NavDisplay
 import com.kaylakautai.pikau.navigation.Navigator
 import com.kaylakautai.pikau.navigation.PikauBottomBar
+import com.kaylakautai.pikau.navigation.PikauTabPager
 import com.kaylakautai.pikau.navigation.Route
 import com.kaylakautai.pikau.navigation.TopLevelDestination
 import com.kaylakautai.gear.GearScreen
@@ -67,14 +70,24 @@ fun PikauApp() {
 
     Box(Modifier.fillMaxSize()) {
         PikauBackground()
+        val showBottomBar = navigationState.isAtTabRoot
         Scaffold(
             containerColor = Color.Transparent,
-            contentWindowInsets = WindowInsets(0),
-            bottomBar = { PikauBottomBar(navigationState) { navigator.navigate(it) } }
+            contentWindowInsets = if (showBottomBar) {
+                WindowInsets(0)
+            } else {
+                WindowInsets.navigationBars.only(WindowInsetsSides.Bottom)
+            },
+            bottomBar = {
+                if (showBottomBar) {
+                    PikauBottomBar(navigationState) { navigator.navigate(it) }
+                }
+            }
         ) { innerPadding ->
-            NavDisplay(
-                entries = navigationState.toDecoratedEntries(entryProvider),
-                onBack = { navigator.goBack() },
+            PikauTabPager(
+                navigationState = navigationState,
+                navigator = navigator,
+                entryProvider = entryProvider,
                 modifier = Modifier.padding(innerPadding)
             )
         }
