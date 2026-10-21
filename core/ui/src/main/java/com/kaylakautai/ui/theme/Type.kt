@@ -62,7 +62,7 @@ val PikauTypography = Typography(
     titleLarge = TextStyle(
         fontFamily = AfacadFont,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 64.sp,
+        fontSize = 48.sp,
         lineHeight = 28.sp,
     ),
     labelMedium = TextStyle(
