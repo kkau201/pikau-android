@@ -5,8 +5,11 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
@@ -52,10 +55,12 @@ fun PikauTabs(
     modifier: Modifier = Modifier
 ) {
     SingleChoiceSegmentedButtonRow(
-        modifier = modifier.background(
-            color = MaterialTheme.colorScheme.secondary,
-            shape = PikauShapes.medium
-        )
+        modifier = modifier
+            .background(
+                color = MaterialTheme.colorScheme.secondary,
+                shape = PikauShapes.medium
+            )
+            .height(35.dp)
     ) {
         options.forEachIndexed { index, text ->
             SegmentedButton(
@@ -71,14 +76,15 @@ fun PikauTabs(
                 // Remove default borders
                 border = BorderStroke(0.dp, Color.Transparent),
                 // Remove default icon
-                icon = {}
+                icon = {},
+                contentPadding = PaddingValues.Zero
             ) {
                 Text(
                     text = text,
                     style = MaterialTheme.typography.bodyMedium,
                     overflow = TextOverflow.Ellipsis,
                     maxLines = 1,
-                    modifier = Modifier.padding(vertical = Spacing.xSmall)
+                    modifier = Modifier
                 )
             }
         }
