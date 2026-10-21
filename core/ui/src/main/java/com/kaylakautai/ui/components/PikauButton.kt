@@ -136,7 +136,11 @@ private fun ButtonContent(
             )
         }
 
-        Text(text = text, style = MaterialTheme.typography.titleMedium)
+        Text(
+            text = text,
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.padding(horizontal = Spacing.xSmall)
+        )
 
         if (trailingIcon != null) {
             Icon(
