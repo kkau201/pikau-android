@@ -38,4 +38,5 @@ dependencies {
     implementation(project(":core:data"))
     implementation(project(":feature:trips"))
     implementation(project(":feature:gear"))
+    implementation(project(":feature:profile"))
 }

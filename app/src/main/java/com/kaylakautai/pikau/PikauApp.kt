@@ -21,6 +21,7 @@ import com.kaylakautai.pikau.navigation.PikauTabPager
 import com.kaylakautai.pikau.navigation.Route
 import com.kaylakautai.pikau.navigation.TopLevelDestination
 import com.kaylakautai.gear.GearScreen
+import com.kaylakautai.profile.ProfileScreen
 import com.kaylakautai.pikau.navigation.rememberNavigationState
 import com.kaylakautai.trips.TripsScreen
 import com.kaylakautai.ui.components.PikauBackground
@@ -55,7 +56,7 @@ fun PikauApp() {
             )
         }
         entry<Route.MeTab> {
-            Text("Me Screen")
+            ProfileScreen()
         }
 
         entry<Route.TripDetail> { key ->

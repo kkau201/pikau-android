@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_greeting">Kia ora</string>
+    <string name="profile_display_name">Kayla</string>
+    <string name="profile_edit_button">Edit Profile</string>
+    <string name="profile_stat_trips_completed">Trips Completed</string>
+    <string name="profile_stat_total_distance">Total Distance</string>
+    <string name="profile_stat_avg_pack_weight">Avg. Pack Weight</string>
+    <string name="profile_stat_distance_km">%1$dkm</string>
+    <string name="profile_stat_weight_kg">%1$dkg</string>
+    <string name="profile_stat_empty">—</string>
+    <string name="profile_section_profile">Profile</string>
+    <string name="profile_section_legal">Legal</string>
+    <string name="profile_link_app_settings">App settings</string>
+    <string name="profile_link_notifications">Notification preferences</string>
+    <string name="profile_link_emergency">Emergency contact</string>
+    <string name="profile_link_privacy">Privacy Policy</string>
+    <string name="profile_link_open_source">Open source libraries</string>
+    <string name="profile_link_support">Contact support</string>
+    <string name="profile_version">v. 1.0.0</string>
+    <string name="profile_loading_title">Opening your profile...</string>
+    <string name="profile_loading_message">Getting your details ready.</string>
+</resources>
