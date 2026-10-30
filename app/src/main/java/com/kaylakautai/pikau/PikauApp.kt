@@ -21,6 +21,7 @@ import com.kaylakautai.pikau.navigation.PikauTabPager
 import com.kaylakautai.pikau.navigation.Route
 import com.kaylakautai.pikau.navigation.TopLevelDestination
 import com.kaylakautai.gear.GearScreen
+import com.kaylakautai.profile.OpenSourceLibrariesScreen
 import com.kaylakautai.profile.ProfileScreen
 import com.kaylakautai.pikau.navigation.rememberNavigationState
 import com.kaylakautai.trips.TripsScreen
@@ -56,7 +57,14 @@ fun PikauApp() {
             )
         }
         entry<Route.MeTab> {
-            ProfileScreen()
+            ProfileScreen(
+                onOpenSourceClick = {
+                    navigator.navigate(Route.OpenSourceLibraries)
+                }
+            )
+        }
+        entry<Route.OpenSourceLibraries> {
+            OpenSourceLibrariesScreen(onBackClick = navigator::goBack)
         }
 
         entry<Route.TripDetail> { key ->

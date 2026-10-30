@@ -38,7 +38,7 @@ fun PikauScreenScaffold(
                 .fillMaxWidth()
                 .heightIn(min = HeaderMinHeight)
                 .statusBarsPadding()
-                .padding(horizontal = Spacing.xlarge, vertical = Spacing.medium),
+                .padding(horizontal = Spacing.large, vertical = Spacing.medium),
             content = header
         )
         Column(

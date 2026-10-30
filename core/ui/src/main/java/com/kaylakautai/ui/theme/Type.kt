@@ -47,6 +47,18 @@ val PikauTypography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
     ),
+    bodyLarge = TextStyle(
+        fontFamily = AfacadFont,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+    ),
+    headlineMedium = TextStyle(
+        fontFamily = AfacadFont,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 48.sp,
+        lineHeight = 48.sp,
+    ),
     titleSmall = TextStyle(
         fontFamily = AfacadFont,
         fontWeight = FontWeight.Bold,
@@ -62,8 +74,8 @@ val PikauTypography = Typography(
     titleLarge = TextStyle(
         fontFamily = AfacadFont,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 48.sp,
-        lineHeight = 28.sp,
+        fontSize = 32.sp,
+        lineHeight = 36.sp,
     ),
     labelMedium = TextStyle(
         fontFamily = FontFamily.Default,

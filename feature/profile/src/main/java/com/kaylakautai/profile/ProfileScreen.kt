@@ -48,7 +48,9 @@ private val HeaderIconSize = 80.dp
 private val RowIconSize = 26.dp
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(
+    onOpenSourceClick: () -> Unit,
+) {
     val vm: ProfileViewModel = hiltViewModel()
     val state by vm.uiState.collectAsStateWithLifecycle()
 
@@ -62,7 +64,13 @@ fun ProfileScreen() {
         is UiState.Content -> ProfileScreenContent(
             state = currentState.data,
             onEditProfileClick = vm::onEditProfileClick,
-            onLinkClick = vm::onLinkClick,
+            onLinkClick = { link ->
+                if (link == ProfileLink.OpenSource) {
+                    onOpenSourceClick()
+                } else {
+                    vm.onLinkClick(link)
+                }
+            },
         )
     }
 }
@@ -73,13 +81,6 @@ fun ProfileScreenContent(
     onEditProfileClick: () -> Unit,
     onLinkClick: (ProfileLink) -> Unit,
 ) {
-    val nameStyle = MaterialTheme.typography.titleLarge.copy(
-        lineHeight = 48.sp,
-        lineHeightStyle = LineHeightStyle(
-            alignment = LineHeightStyle.Alignment.Top,
-            trim = LineHeightStyle.Trim.FirstLineTop,
-        ),
-    )
 
     PikauScreenScaffold(
         header = {
@@ -119,7 +120,12 @@ fun ProfileScreenContent(
                         )
                         PikauText(
                             textRes = R.string.profile_display_name,
-                            style = nameStyle,
+                            style = MaterialTheme.typography.headlineMedium.copy(
+                                lineHeightStyle = LineHeightStyle(
+                                    alignment = LineHeightStyle.Alignment.Top,
+                                    trim = LineHeightStyle.Trim.FirstLineTop,
+                                ),
+                            ),
                             textAlign = TextAlign.Start,
                         )
                     }

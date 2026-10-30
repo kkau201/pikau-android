@@ -22,6 +22,7 @@ import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import org.w3c.dom.NodeList
 
 class OpenSourceCoordinatesTransformer : Transformer<List<String>, ResolvedComponentResult>, Serializable {
     override fun transform(root: ResolvedComponentResult): List<String> {
@@ -261,7 +262,7 @@ private fun Element.childElements(): List<Element> = childNodes.elements()
 private fun Element.text(localName: String): String? =
     child(localName)?.textContent?.trim()?.takeIf { it.isNotEmpty() }
 
-private fun org.w3c.dom.NodeList.elements(): List<Element> =
+private fun NodeList.elements(): List<Element> =
     (0 until length).mapNotNull { item(it) }.filter { it.nodeType == Node.ELEMENT_NODE }.map { it as Element }
 
 private const val PROJECT_GROUP = "com.kaylakautai"

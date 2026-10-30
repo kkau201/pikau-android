@@ -20,4 +20,13 @@
     <string name="profile_version">v. 1.0.0</string>
     <string name="profile_loading_title">Opening your profile...</string>
     <string name="profile_loading_message">Getting your details ready.</string>
+    <string name="profile_open_source_title">Open source libraries</string>
+    <string name="profile_open_source_intro">Pikau is built with these open source libraries.</string>
+    <string name="profile_open_source_back">Back</string>
+    <string name="profile_open_source_loading_title">Opening libraries...</string>
+    <string name="profile_open_source_loading_message">Gathering the libraries Pikau is built with.</string>
+    <plurals name="profile_open_source_count">
+        <item quantity="one">%1$d library · Thank you to their authors</item>
+        <item quantity="other">%1$d libraries · Thank you to their authors</item>
+    </plurals>
 </resources>

@@ -22,4 +22,7 @@ sealed interface Route : NavKey {
 
     @Serializable
     data class TripDetail(val tripId: String) : Route
+
+    @Serializable
+    data object OpenSourceLibraries : Route
 }

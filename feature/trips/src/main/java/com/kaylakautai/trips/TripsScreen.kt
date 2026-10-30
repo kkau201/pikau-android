@@ -65,7 +65,7 @@ fun TripsScreenContent(
     header = {
         PikauText(
             textRes = state.title,
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(vertical = Spacing.xlarge)
