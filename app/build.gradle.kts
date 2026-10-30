@@ -1,3 +1,9 @@
+import com.android.build.api.variant.ApplicationAndroidComponentsExtension
+import com.kaylakautai.buildlogic.GenerateOpenSourceLibrariesTask
+import com.kaylakautai.buildlogic.OpenSourceCoordinatesTransformer
+import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.register
+
 plugins {
     alias(libs.plugins.pikau.android.application.compose)
     alias(libs.plugins.pikau.hilt.library)
@@ -18,6 +24,22 @@ android {
             optimization { enable = false }
         }
     }
+}
+
+extensions.getByType<ApplicationAndroidComponentsExtension>().onVariants { variant ->
+    val coordinates = variant.runtimeConfiguration.incoming.resolutionResult.rootComponent.map(
+        OpenSourceCoordinatesTransformer(),
+    )
+    val generateLibraries = tasks.register<GenerateOpenSourceLibrariesTask>(
+        "generate${variant.name.replaceFirstChar { it.uppercase() }}OpenSourceLibraries",
+    ) {
+        this.coordinates.set(coordinates)
+        gradleUserHome.set(gradle.gradleUserHomeDir)
+    }
+    variant.sources.assets?.addGeneratedSourceDirectory(
+        generateLibraries,
+        GenerateOpenSourceLibrariesTask::outputDirectory,
+    )
 }
 
 dependencies {
