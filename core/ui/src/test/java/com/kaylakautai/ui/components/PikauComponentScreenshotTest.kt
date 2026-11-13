@@ -15,9 +15,8 @@ import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
 /**
- * Golden screenshots for the design-system components.
- * Update them with `./gradlew :core:ui:recordRoborazziDebug` after an intentional visual change.
- * `./gradlew :core:ui:testDebugUnitTest` compares against the images in `src/test/screenshots`.
+ * Renders the design-system components. Pixel comparison is not part of the normal test run.
+ * Record or verify on one OS with `:core:ui:recordRoborazziDebug` or `:core:ui:verifyRoborazziDebug`.
  */
 @RunWith(RobolectricTestRunner::class)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
