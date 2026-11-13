@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">Pīkau</string>
+    <string name="home_tagline">Ready for an adventure!</string>
+    <string name="home_upcoming_title">Upcoming trip</string>
+    <string name="home_no_upcoming_trip">No upcoming trips yet.</string>
+    <string name="home_loading_title">Opening home...</string>
+    <string name="home_loading_message">Getting your next trip ready.</string>
+</resources>

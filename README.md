@@ -11,7 +11,7 @@ Four tabs: Home, Gear, Trips, and Me. Deeper screens slide in, and the bottom ba
 - **Gear library.** Search, filter by category, empty state. Categories are seeded on first launch (shelter, sleep, cooking, and so on). New Item does not open a form yet, and the gear detail route is a placeholder.
 - **Trips.** Upcoming and past lists, from the trip start date. New trip does not open a form yet, and trip detail is a placeholder.
 - **Me.** Greeting, trips completed, and rows for settings, notifications, emergency contact, privacy, open source libraries, and support. Open source libraries is the only row that navigates. The list is generated from the app's runtime dependencies at build time. Distance and average pack weight stay empty until those numbers exist.
-- **Home.** Placeholder text.
+- **Home.** Title, tagline, and the next upcoming trip as plain text. Tapping it opens the trip detail placeholder. Search, the trip card, to-do list, and the rest of that screen are still to build.
 
 Loading and full-screen error states are shared, and errors can be retried.
 

@@ -18,6 +18,7 @@ import com.kaylakautai.pikau.navigation.PikauTabPager
 import com.kaylakautai.pikau.navigation.Route
 import com.kaylakautai.pikau.navigation.TopLevelDestination
 import com.kaylakautai.gear.GearScreen
+import com.kaylakautai.home.HomeScreen
 import com.kaylakautai.profile.OpenSourceLibrariesScreen
 import com.kaylakautai.profile.ProfileScreen
 import com.kaylakautai.pikau.navigation.rememberNavigationState
@@ -34,10 +35,13 @@ fun PikauApp() {
 
     val navigator = remember(navigationState) { Navigator(navigationState) }
 
-    // TODO Temp placeholders
     val entryProvider = entryProvider<NavKey> {
         entry<Route.HomeTab> {
-            Text("Home Screen")
+            HomeScreen(
+                onTripClick = { tripId ->
+                    navigator.navigate(Route.TripDetail(tripId))
+                }
+            )
         }
         entry<Route.GearTab> {
             GearScreen(
