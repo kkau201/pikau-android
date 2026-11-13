@@ -23,6 +23,7 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
             dependencies {
                 val bom = libs.findLibrary("androidx-compose-bom").get()
                 add("implementation", platform(bom))
+                add("testImplementation", platform(bom))
                 add("androidTestImplementation", platform(bom))
 
                 add("implementation", libs.findLibrary("androidx-compose-ui").get())
@@ -31,6 +32,7 @@ class AndroidLibraryComposeConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx-compose-material3").get())
                 add("debugImplementation", libs.findLibrary("androidx-compose-ui-tooling").get())
                 add("debugImplementation", libs.findLibrary("androidx-compose-ui-test-manifest").get())
+                add("testImplementation", libs.findLibrary("androidx-compose-ui-test-junit4").get())
             }
         }
     }

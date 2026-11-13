@@ -19,5 +19,6 @@ dependencies {
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)
 
     testImplementation(testFixtures(project(":core:model")))
+    testImplementation(testFixtures(project(":core:data")))
     testImplementation(libs.junit)
 }

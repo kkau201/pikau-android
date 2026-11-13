@@ -23,6 +23,7 @@ androidxTestCore = "1.7.0"
 nav3Core = "1.2.0"
 lifecycleViewmodelNav3 = "2.11.0"
 lottie = "6.7.1"
+roborazzi = "1.79.0"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -66,6 +67,8 @@ turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
+roborazzi = { group = "io.github.takahirom.roborazzi", name = "roborazzi", version.ref = "roborazzi" }
+roborazzi-compose = { group = "io.github.takahirom.roborazzi", name = "roborazzi-compose", version.ref = "roborazzi" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -82,4 +85,5 @@ pikau-android-library = { id = "pikau.android.library" }
 pikau-android-library-compose = { id = "pikau.android.library.compose" }
 pikau-jvm-library = { id = "pikau.jvm.library" }
 pikau-hilt-library = { id = "pikau.hilt.library" }
+roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 

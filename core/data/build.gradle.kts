@@ -5,6 +5,7 @@ plugins {
 
 android {
     namespace = "com.kaylakautai.data"
+    testFixtures.enable = true
 }
 
 dependencies {
@@ -14,6 +15,9 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.androidx.test.core.ktx)
     testImplementation(libs.robolectric)
+
+    testFixturesImplementation(project(":core:model"))
+    testFixturesImplementation(libs.kotlinx.coroutines)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 
