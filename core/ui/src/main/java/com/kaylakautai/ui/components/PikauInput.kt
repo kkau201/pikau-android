@@ -41,7 +41,7 @@ fun PikauInput(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
-        textStyle = MaterialTheme.typography.titleMedium.copy(color = MaterialTheme.colorScheme.onSecondary),
+        textStyle = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSecondary),
         cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
         singleLine = true,
         decorationBox = { innerTextField ->
@@ -65,7 +65,7 @@ fun PikauInput(
                     if (value.isEmpty()) {
                         Text(
                             text = placeholder,
-                            style = MaterialTheme.typography.titleMedium,
+                            style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onSecondary.copy(alpha = 0.6f)
                         )
                     }

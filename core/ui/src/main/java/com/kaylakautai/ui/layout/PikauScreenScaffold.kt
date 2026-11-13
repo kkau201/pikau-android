@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.ZeroCornerSize
@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.kaylakautai.ui.theme.PikauShapes
 import com.kaylakautai.ui.theme.Spacing
 
-private val HeaderMinHeight = 240.dp
+private val HeaderHeight = 200.dp
 private val PanelShape = PikauShapes.large.copy(
     bottomStart = ZeroCornerSize,
     bottomEnd = ZeroCornerSize
@@ -36,8 +36,8 @@ fun PikauScreenScaffold(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = HeaderMinHeight)
                 .statusBarsPadding()
+                .height(HeaderHeight)
                 .padding(horizontal = Spacing.large, vertical = Spacing.medium),
             content = header
         )
