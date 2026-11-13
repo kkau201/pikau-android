@@ -1,5 +1,7 @@
 package com.kaylakautai.pikau.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -62,6 +64,14 @@ fun PikauTabPager(
             entries = entriesByTab.getValue(tabs[page].route),
             onBack = { navigator.goBack() },
             modifier = Modifier.fillMaxSize(),
+            transitionSpec = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start) togetherWith
+                        slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Start)
+            },
+            popTransitionSpec = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.End) togetherWith
+                        slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End)
+            },
         )
     }
 }
