@@ -1,9 +1,9 @@
 package com.kaylakautai.profile
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kaylakautai.data.repo.TripRepository
+import com.kaylakautai.data.util.PikauLogger
 import com.kaylakautai.ui.lce.DisplayError
 import com.kaylakautai.ui.lce.UiState
 import com.kaylakautai.ui.lce.asUiState
@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.update
 class ProfileViewModel @Inject constructor(
     tripRepository: TripRepository,
     clock: Clock,
+    private val logger: PikauLogger,
 ) : ViewModel() {
     private val retryTrigger = MutableStateFlow(0)
 
@@ -50,10 +51,10 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun onEditProfileClick() {
-        Log.i("PROFILE_SCREEN", "onEditProfileClick() triggered")
+        logger.i("PROFILE_SCREEN", "onEditProfileClick() triggered")
     }
 
     fun onLinkClick(link: ProfileLink) {
-        Log.i("PROFILE_SCREEN", "onLinkClick($link) triggered")
+        logger.i("PROFILE_SCREEN", "onLinkClick($link) triggered")
     }
 }

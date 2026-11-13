@@ -1,9 +1,9 @@
 package com.kaylakautai.trips
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kaylakautai.data.repo.TripRepository
+import com.kaylakautai.data.util.PikauLogger
 import com.kaylakautai.model.Trip
 import com.kaylakautai.ui.lce.DisplayError
 import com.kaylakautai.ui.lce.UiState
@@ -28,7 +28,8 @@ import javax.inject.Inject
 @HiltViewModel
 class TripsViewModel @Inject constructor(
     tripsRepository: TripRepository,
-    clock: Clock
+    clock: Clock,
+    private val logger: PikauLogger,
 ) : ViewModel() {
     private val _selectedIndex = MutableStateFlow(0)
     private val retryTrigger = MutableStateFlow(0)
@@ -61,7 +62,7 @@ class TripsViewModel @Inject constructor(
 
     fun onNewTripClick() {
         // TODO
-        Log.i("TRIPS_SCREEN", "onNewTripClick() triggered")
+        logger.i("TRIPS_SCREEN", "onNewTripClick() triggered")
     }
 
     fun onRetryClick() = retryTrigger.update { it + 1 }

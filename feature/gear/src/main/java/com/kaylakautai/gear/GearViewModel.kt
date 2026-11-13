@@ -1,10 +1,10 @@
 package com.kaylakautai.gear
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kaylakautai.data.repo.CategoryRepository
 import com.kaylakautai.data.repo.GearRepository
+import com.kaylakautai.data.util.PikauLogger
 import com.kaylakautai.model.Gear
 import com.kaylakautai.ui.lce.DisplayError
 import com.kaylakautai.ui.lce.UiState
@@ -26,6 +26,7 @@ import javax.inject.Inject
 class GearViewModel @Inject constructor(
     gearRepository: GearRepository,
     categoryRepository: CategoryRepository,
+    private val logger: PikauLogger,
 ) : ViewModel() {
     private val selectedCategoryIds = MutableStateFlow<Set<String>>(emptySet())
     private val searchQuery = MutableStateFlow("")
@@ -71,7 +72,7 @@ class GearViewModel @Inject constructor(
 
     fun onNewItemClick() {
         // TODO
-        Log.i("GEAR_SCREEN", "onNewItemClick() triggered")
+        logger.i("GEAR_SCREEN", "onNewItemClick() triggered")
     }
 
     fun onRetryClick() = retryTrigger.update { it + 1 }
