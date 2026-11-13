@@ -2,10 +2,7 @@ package com.kaylakautai.pikau
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -15,8 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.entryProvider
+import com.kaylakautai.pikau.navigation.AnimatedPikauBottomBar
 import com.kaylakautai.pikau.navigation.Navigator
-import com.kaylakautai.pikau.navigation.PikauBottomBar
 import com.kaylakautai.pikau.navigation.PikauTabPager
 import com.kaylakautai.pikau.navigation.Route
 import com.kaylakautai.pikau.navigation.TopLevelDestination
@@ -79,18 +76,15 @@ fun PikauApp() {
 
     Box(Modifier.fillMaxSize()) {
         PikauBackground()
-        val showBottomBar = navigationState.isAtTabRoot
         Scaffold(
             containerColor = Color.Transparent,
-            contentWindowInsets = if (showBottomBar) {
-                WindowInsets(0)
-            } else {
-                WindowInsets.navigationBars.only(WindowInsetsSides.Bottom)
-            },
+            contentWindowInsets = WindowInsets(0),
             bottomBar = {
-                if (showBottomBar) {
-                    PikauBottomBar(navigationState) { navigator.navigate(it) }
-                }
+                AnimatedPikauBottomBar(
+                    visible = navigationState.isAtTabRoot,
+                    navigationState = navigationState,
+                    onTabClick = navigator::navigate,
+                )
             }
         ) { innerPadding ->
             PikauTabPager(
