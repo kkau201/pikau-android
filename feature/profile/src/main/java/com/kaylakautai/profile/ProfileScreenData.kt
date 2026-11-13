@@ -32,34 +32,34 @@ val profileSections = listOf(
         ProfileRow(
             ProfileLink.AppSettings,
             R.string.profile_link_app_settings,
-            R.drawable.ic_settings,
+            R.drawable.profile_ic_settings,
         ),
         ProfileRow(
             ProfileLink.Notifications,
             R.string.profile_link_notifications,
-            R.drawable.ic_notifications,
+            R.drawable.profile_ic_notifications,
         ),
         ProfileRow(
             ProfileLink.EmergencyContact,
             R.string.profile_link_emergency,
-            R.drawable.ic_emergency,
+            R.drawable.profile_ic_emergency,
         ),
     ),
     R.string.profile_section_legal to listOf(
         ProfileRow(
             ProfileLink.PrivacyPolicy,
             R.string.profile_link_privacy,
-            R.drawable.ic_policy,
+            R.drawable.profile_ic_policy,
         ),
         ProfileRow(
             ProfileLink.OpenSource,
             R.string.profile_link_open_source,
-            R.drawable.ic_libraries,
+            R.drawable.profile_ic_libraries,
         ),
         ProfileRow(
             ProfileLink.ContactSupport,
             R.string.profile_link_support,
-            R.drawable.ic_contact,
+            R.drawable.profile_ic_contact,
         ),
     ),
 )
