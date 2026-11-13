@@ -2,12 +2,13 @@ package com.kaylakautai.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kaylakautai.data.di.IoDispatcher
 import com.kaylakautai.ui.lce.DisplayError
 import com.kaylakautai.ui.lce.UiState
 import com.kaylakautai.ui.lce.asUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -24,6 +25,7 @@ import kotlinx.coroutines.flow.update
 @HiltViewModel
 class OpenSourceLibrariesViewModel @Inject constructor(
     private val source: OpenSourceLibrariesSource,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : ViewModel() {
     private val retryTrigger = MutableStateFlow(0)
 
@@ -31,7 +33,7 @@ class OpenSourceLibrariesViewModel @Inject constructor(
         .flatMapLatest {
             flow { emit(source.read()) }
                 .map { libraries -> OpenSourceLibrariesScreenData(libraries = libraries) }
-                .flowOn(Dispatchers.IO)
+                .flowOn(ioDispatcher)
                 .asUiState(DisplayError.Generic)
                 .onStart { emit(UiState.Loading) }
         }
