@@ -1,54 +1,86 @@
 # Pīkau
 
-A Kotlin/Jetpack Compose tramping companion app. Current MVP will include trip planning, 
-a personal gear library, and meal planning.
+Android app for planning tramping trips. Pīkau is te reo Māori for a backpack, or for carrying something on your back.
 
-> **Pīkau** (te reo Māori) — a backpack, or "to carry on one's back."
+I'm building it for my own trips. The interesting part is having Room, navigation, and screen state in one app, with a design in [Figma](https://www.figma.com/design/7UdZ0TfROyJnIYNndzIe0T/Hike-app) and the task list on the [Notion board](https://app.notion.com/p/Hike-App-3ce8d9047aff8087b615f3a62697adc6).
 
-## Status
+## On screen
 
-🚧 In active development — MVP in progress.
+Four tabs: Home, Gear, Trips, and Me. Deeper screens slide in, and the bottom bar animates out while you're on one.
 
-## Features (MVP)
+- **Gear library.** Search, filter by category, empty state. Categories are seeded on first launch (shelter, sleep, cooking, and so on). New Item does not open a form yet, and the gear detail route is a placeholder.
+- **Trips.** Upcoming and past lists, from the trip start date. New trip does not open a form yet, and trip detail is a placeholder.
+- **Me.** Greeting, trips completed, and rows for settings, notifications, emergency contact, privacy, open source libraries, and support. Open source libraries is the only row that navigates. The list is generated from the app's runtime dependencies at build time. Distance and average pack weight stay empty until those numbers exist.
+- **Home.** Placeholder text.
 
-- **Trips**: create and browse tramping trips
-- **Gear Library**: a reusable personal database of gear
-- **Packing Lists**: generated per trip from the Gear Library, grouped by category
-- **Pre-trip Reminders**: local notification ahead of a trip date
+Loading and full-screen error states are shared, and errors can be retried.
 
-## Future work
-- **Meal Library**: a reusable personal database of meals
-- **Weather integration**: the updated, predicted weather displayed per trip
-- **AllTrails integration**: a reusable personal database of meals
-- **Trip to-do list**: a list of tasks per trip with tracked completion 
+## Already in the database
 
-## Tech stack
+Room (schema version 1) stores trips, gear, gear categories, trip categories, packing list items, food items, and trip notes. Repositories for packing lists, food, and notes are implemented and covered by tests. None of that is hooked up to a screen yet.
 
-| Layer | Choice |
-|---|---|
-| UI | Jetpack Compose, Material 3 |
-| Architecture | MVVM (ViewModel + StateFlow) |
-| DI | Hilt |
-| Persistence | Room |
-| Background work | WorkManager |
-| Navigation | Compose Navigation |
-| Testing | JUnit, Turbine, Compose UI Testing |
+A trip has a name, location, dates, categories, and difficulty. Gear has a name, category, weight in grams, and the trip types it is suggested for.
 
-## Why this project
+## Still to build
 
-Built to be genuinely useful for planning my own tramping trips, and to work
-through the full Android stack (persistence, background work, and
-non-trivial UI state) end to end, rather than following a single tutorial.
+From the current Figma screens:
 
-## Roadmap
+- **Home.** Upcoming trip and a to-do list.
+- **New trip.** Name, location, dates, categories.
+- **Trip detail.** Overview with location, a map, dates, an Open-Meteo forecast, difficulty, trip type, and packing progress. Then packing, food, and notes.
+- **New gear item.** Name, category, weight, quantity, and which trip types it is suggested for. Quantity is in the design and not in the schema yet.
+- **Gear detail.**
+- **Me.** Edit profile, app settings, notification preferences, emergency contact, privacy policy, and contact support. The rows are on screen. The destinations are not.
 
-See [project board](#https://app.notion.com/p/Hike-App-3ce8d9047aff8087b615f3a62697adc6?source=copy_link) 
-for current task breakdown across design and development.
+## Layout
 
-## Screenshots
+```
+app/                 navigation, bottom bar, Hilt application
+feature/trips        trips list
+feature/gear         gear library
+feature/profile      Me, open source libraries
+core/model           shared models
+core/database        Room
+core/data            repositories
+core/ui              theme, components, loading and error
+core/testing         Main dispatcher rule for ViewModel tests
+build-logic          convention plugins
+```
 
-_Coming soon._
+```
+app
+ |
+ +-- trips ------+
+ +-- gear -------+--> ui
+ +-- profile ----+    data --> database --> model
+ |                    model
+ +-- ui
+ +-- data
+ +-- model
+```
 
-## License
+Down the arrows is "depends on". The feature modules do not depend on each other.
 
-MIT
+## Stack
+
+Kotlin, Jetpack Compose, Material 3, Hilt, Room, Navigation 3, kotlinx.serialization. Shared Android setup lives in the convention plugins. minSdk 26, JDK 17.
+
+## Run and test
+
+Open the project in Android Studio, or:
+
+```
+./gradlew :app:assembleDebug
+./gradlew test
+```
+
+GitHub Actions runs `./gradlew build` and `./gradlew test` on Ubuntu with JDK 17, for pushes and pull requests to `main`.
+
+ViewModel tests use Turbine. Room repositories have their own tests. Compose UI tests cover the button, chip, and tabs.
+
+Roborazzi screenshot tests are set up under `core/ui`, but `./gradlew test` does not compare images. The goldens were recorded on macOS, and Ubuntu renders the edges differently. Record or verify on one machine:
+
+```
+./gradlew :core:ui:recordRoborazziDebug
+./gradlew :core:ui:verifyRoborazziDebug
+```
