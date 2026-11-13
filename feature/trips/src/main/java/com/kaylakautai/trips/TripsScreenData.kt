@@ -1,8 +1,10 @@
 package com.kaylakautai.trips
 
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Immutable
 import com.kaylakautai.ui.model.TripListItem
 
+@Immutable
 data class TripsScreenData(
     @StringRes val title: Int = R.string.trips_title,
     val selectedOptionIndex: Int = 0,

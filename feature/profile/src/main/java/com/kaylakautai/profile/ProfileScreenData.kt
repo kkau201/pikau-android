@@ -2,11 +2,20 @@ package com.kaylakautai.profile
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.compose.runtime.Immutable
 
+@Immutable
 data class ProfileScreenData(
     val tripsCompleted: Int = 0,
     val totalDistanceKm: Int? = null,
     val avgPackWeightKg: Int? = null,
+)
+
+@Immutable
+data class ProfileRow(
+    val link: ProfileLink,
+    @StringRes val labelRes: Int,
+    @DrawableRes val iconRes: Int,
 )
 
 enum class ProfileLink {
@@ -17,12 +26,6 @@ enum class ProfileLink {
     OpenSource,
     ContactSupport,
 }
-
-data class ProfileRow(
-    val link: ProfileLink,
-    @StringRes val labelRes: Int,
-    @DrawableRes val iconRes: Int,
-)
 
 val profileSections = listOf(
     R.string.profile_section_profile to listOf(

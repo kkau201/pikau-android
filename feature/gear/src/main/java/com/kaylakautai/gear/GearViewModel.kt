@@ -40,16 +40,24 @@ class GearViewModel @Inject constructor(
                 selectedCategoryIds,
                 searchQuery,
             ) { allGear, categories, selectedIds, query ->
-                val categoryIds = categories.map { it.id }.toSet()
-                val activeCategoryIds = selectedIds.intersect(categoryIds)
+                val validCategoryIds = categories.mapTo(HashSet(categories.size)) { it.id }
+                val activeCategoryIds = selectedIds.intersect(validCategoryIds)
+                val trimmedQuery = query.trim()
+
+                val filteredGearList = allGear.mapNotNull { gear ->
+                    if (gear.matches(activeCategoryIds, trimmedQuery)) {
+                        gear.toListItem()
+                    } else {
+                        null
+                    }
+                }
+
                 GearScreenData(
                     searchQuery = query,
                     categories = categories,
                     selectedCategoryIds = activeCategoryIds,
                     hasGear = allGear.isNotEmpty(),
-                    gearList = allGear
-                        .filter { gear -> gear.matches(activeCategoryIds, query) }
-                        .map { it.toListItem() }
+                    gearList = filteredGearList
                 )
             }
                 .asUiState(displayError = DisplayError.NoGearFound)
@@ -77,9 +85,9 @@ class GearViewModel @Inject constructor(
 
     fun onRetryClick() = retryTrigger.update { it + 1 }
 
-    private fun Gear.matches(categoryIds: Set<String>, query: String): Boolean {
+    private fun Gear.matches(categoryIds: Set<String>, trimmedQuery: String): Boolean {
         val inCategory = categoryIds.isEmpty() || category.id in categoryIds
-        val matchesQuery = query.isBlank() || name.contains(query.trim(), ignoreCase = true)
+        val matchesQuery = trimmedQuery.isEmpty() || name.contains(trimmedQuery, ignoreCase = true)
         return inCategory && matchesQuery
     }
 
